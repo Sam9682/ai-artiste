@@ -1,15 +1,26 @@
 version: '3.8'
 
 services:
+<<<<<<< HEAD
   web:
     container_name: ai-artiste-web-${USER_ID:-1}-${HTTP_PORT:-8000}
+=======
+  ai-artiste-web-${USER_ID}-${HTTP_PORT}:
+>>>>>>> a820e2faf6b36158e901ee3d7b23d97e31982777
     build: .
+    container_name: ai-artiste-web-${USER_ID}-${HTTP_PORT}
     ports:
+<<<<<<< HEAD
       - "${HTTP_PORT:-8000}:8000"
+=======
+      - "${HTTP_PORT}:8000"
+>>>>>>> a820e2faf6b36158e901ee3d7b23d97e31982777
     volumes:
       - ./data:/app/data
     environment:
       - DATABASE_URL=sqlite:///./data/artist_venue.db
+      - USER_ID=${USER_ID}
+      - HTTP_PORT=${HTTP_PORT}
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
@@ -17,3 +28,10 @@ services:
       timeout: 3s
       retries: 3
       start_period: 5s
+    networks:
+      - ai-artiste-network-${USER_ID}
+
+networks:
+  ai-artiste-network-${USER_ID}:
+    driver: bridge
+    name: ai-artiste-network-${USER_ID}
