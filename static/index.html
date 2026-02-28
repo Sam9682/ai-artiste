@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist-Venue Matching Platform</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎭 Artist-Venue Matching Platform</h1>
+            <p>Connect artists with performance and exhibition venues</p>
+        </div>
+    </header>
+
+    <nav class="container">
+        <button class="nav-btn active" data-view="search">Search</button>
+        <button class="nav-btn" data-view="artists">Artists</button>
+        <button class="nav-btn" data-view="venues">Venues</button>
+        <button class="nav-btn" data-view="calendar">Calendar</button>
+    </nav>
+
+    <main class="container">
+        <!-- Search View -->
+        <div id="search-view" class="view active">
+            <h2>Search Matches</h2>
+            <div class="search-section">
+                <div class="search-box">
+                    <h3>Find Venues for Artist</h3>
+                    <input type="text" id="artist-search-id" placeholder="Artist ID">
+                    <input type="number" id="artist-min-score" placeholder="Min Score (0-1)" step="0.1" min="0" max="1">
+                    <button onclick="searchVenuesForArtist()">Search</button>
+                </div>
+                <div class="search-box">
+                    <h3>Find Artists for Venue</h3>
+                    <input type="text" id="venue-search-id" placeholder="Venue ID">
+                    <input type="number" id="venue-min-score" placeholder="Min Score (0-1)" step="0.1" min="0" max="1">
+                    <button onclick="searchArtistsForVenue()">Search</button>
+                </div>
+            </div>
+            <div id="search-results"></div>
+        </div>
+
+        <!-- Artists View -->
+        <div id="artists-view" class="view">
+            <h2>Artists</h2>
+            <button onclick="showCreateArtistForm()">+ Create Artist</button>
+            <div id="artists-list"></div>
+        </div>
+
+        <!-- Venues View -->
+        <div id="venues-view" class="view">
+            <h2>Venues</h2>
+            <button onclick="showCreateVenueForm()">+ Create Venue</button>
+            <div id="venues-list"></div>
+        </div>
+
+        <!-- Calendar View -->
+        <div id="calendar-view" class="view">
+            <h2>Calendar</h2>
+            <div class="calendar-section">
+                <div class="calendar-box">
+                    <h3>Artist Calendar</h3>
+                    <input type="text" id="artist-calendar-id" placeholder="Artist ID">
+                    <button onclick="loadArtistCalendar()">Load</button>
+                    <div id="artist-calendar-events"></div>
+                </div>
+                <div class="calendar-box">
+                    <h3>Venue Calendar</h3>
+                    <input type="text" id="venue-calendar-id" placeholder="Venue ID">
+                    <button onclick="loadVenueCalendar()">Load</button>
+                    <div id="venue-calendar-events"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for forms -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Artist-Venue Matching Platform | Powered by softfluid.fr</p>
+        </div>
+    </footer>
+
+    <script src="/app.js"></script>
+</body>
+</html>
