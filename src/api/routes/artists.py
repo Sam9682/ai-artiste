@@ -1,21 +1,11 @@
 """Artist profile endpoints."""
 from fastapi import APIRouter, HTTPException, Depends
-from typing import List
-from pydantic import BaseModel
 
 from src.models import ArtistProfile, ErrorCode
 from src.managers import ProfileManager
 from src.api.database import get_profile_manager
 
 router = APIRouter()
-
-
-class ArtistProfileRequest(BaseModel):
-    """Request model for artist profile."""
-    model_config = {"arbitrary_types_allowed": True}
-    
-    class Config:
-        from_attributes = True
 
 
 @router.post("/", status_code=201)
