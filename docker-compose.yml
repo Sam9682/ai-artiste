@@ -1,20 +1,12 @@
 version: '3.8'
 
 services:
-<<<<<<< HEAD
   web:
     container_name: ai-artiste-web-${USER_ID:-1}-${HTTP_PORT:-8000}
-=======
-  ai-artiste-web-${USER_ID}-${HTTP_PORT}:
->>>>>>> a820e2faf6b36158e901ee3d7b23d97e31982777
     build: .
     container_name: ai-artiste-web-${USER_ID}-${HTTP_PORT}
     ports:
-<<<<<<< HEAD
       - "${HTTP_PORT:-8000}:8000"
-=======
-      - "${HTTP_PORT}:8000"
->>>>>>> a820e2faf6b36158e901ee3d7b23d97e31982777
     volumes:
       - ./data:/app/data
     environment:
