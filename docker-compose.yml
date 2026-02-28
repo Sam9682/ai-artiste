@@ -4,7 +4,6 @@ services:
   web:
     container_name: ai-artiste-web-${USER_ID:-1}-${HTTP_PORT:-8000}
     build: .
-    container_name: ai-artiste-web-${USER_ID}-${HTTP_PORT}
     ports:
       - "${HTTP_PORT:-8000}:8000"
     volumes:
@@ -21,9 +20,9 @@ services:
       retries: 3
       start_period: 5s
     networks:
-      - ai-artiste-network-${USER_ID}
+      - app-network
 
 networks:
-  ai-artiste-network-${USER_ID}:
+  app-network:
     driver: bridge
-    name: ai-artiste-network-${USER_ID}
+    name: ai-artiste-network-${USER_ID:-1}
